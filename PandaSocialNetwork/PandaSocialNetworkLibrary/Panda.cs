@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PandaSocialNetworkLibrary
 {
-    class Panda
+    public class Panda
     {
     }
 }
