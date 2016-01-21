@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandaSocialNetworkLibrary", "PandaSocialNetworkLibrary\PandaSocialNetworkLibrary.csproj", "{131B3A2E-8571-4E00-A881-DA3E56EDDAA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandaSocialNetworkApplication", "PandaSocialNetworkApplication\PandaSocialNetworkApplication.csproj", "{1687862D-435C-4C90-B731-421FD810316D}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{131B3A2E-8571-4E00-A881-DA3E56EDDAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{131B3A2E-8571-4E00-A881-DA3E56EDDAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{131B3A2E-8571-4E00-A881-DA3E56EDDAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{131B3A2E-8571-4E00-A881-DA3E56EDDAA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1687862D-435C-4C90-B731-421FD810316D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1687862D-435C-4C90-B731-421FD810316D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1687862D-435C-4C90-B731-421FD810316D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1687862D-435C-4C90-B731-421FD810316D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

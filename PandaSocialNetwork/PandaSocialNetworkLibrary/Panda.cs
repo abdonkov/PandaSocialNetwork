@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net;
 
 namespace PandaSocialNetworkLibrary
 {
@@ -11,10 +10,10 @@ namespace PandaSocialNetworkLibrary
 
     public class Panda
     {
-        public string PandaName { get; set; }
-        public string PandaEmail { get; set; }
-        public bool IsMale { get; set; }
-        public bool IsFemale { get; set; }
+        public string PandaName { get; private set; }
+        public string PandaEmail { get; private set; }
+        public bool IsMale { get; private set; }
+        public bool IsFemale { get; private set; }
 
         public Panda(string pandaName, string pandaEmail, Gender gender)
         {
@@ -33,6 +32,11 @@ namespace PandaSocialNetworkLibrary
                     break;
                 default:
                     break;
+            }
+
+            if (!IsValidEmail(pandaEmail))
+            {
+                throw new ArgumentException("Invalid Email!");
             }
         }
 

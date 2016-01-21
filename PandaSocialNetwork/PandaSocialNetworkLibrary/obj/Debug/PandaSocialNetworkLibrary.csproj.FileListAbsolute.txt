@@ -1,0 +1,5 @@
+C:\Users\Mitko\Desktop\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\bin\Debug\PandaSocialNetworkLibrary.dll
+C:\Users\Mitko\Desktop\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\bin\Debug\PandaSocialNetworkLibrary.pdb
+C:\Users\Mitko\Desktop\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\obj\Debug\PandaSocialNetworkLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Mitko\Desktop\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\obj\Debug\PandaSocialNetworkLibrary.dll
+C:\Users\Mitko\Desktop\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\obj\Debug\PandaSocialNetworkLibrary.pdb
