@@ -64,7 +64,7 @@ namespace PandaSocialNetworkLibrary
             int hash = 13;
 
             unchecked
-            {
+    {
                 hash = hash + this.PandaName.GetHashCode() * 17;
                 hash = hash + this.PandaEmail.GetHashCode() * 17;
                 hash = hash + this.IsFemale.GetHashCode() * 17;
