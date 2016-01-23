@@ -19,7 +19,7 @@ namespace PandaSocialNetworkLibrary
         {
             if (pandas.ContainsKey(panda))
             {
-                throw new Exception();
+                throw new PandaAlreadyThereException();
             }
             else
             {
@@ -29,14 +29,7 @@ namespace PandaSocialNetworkLibrary
 
         public bool HasPanda(Panda panda)
         {
-            if (pandas.ContainsKey(panda))
-            {
-                return pandas[panda].Panda.Equals(panda);
-            }
-            else
-            {
-                return false;
-            }
+            return pandas.ContainsKey(panda);
         }
 
         public void MakeFriends(Panda panda1, Panda panda2)

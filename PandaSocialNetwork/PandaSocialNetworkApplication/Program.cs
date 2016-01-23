@@ -46,19 +46,39 @@ namespace PandaSocialNetworkApplication
                         Console.WriteLine();
                         break;
                     case "addPanda":
-                        if (commands[3] == "Male" || commands[3] == "male")
                         {
-                            Panda panda = new Panda(commands[1], commands[2], GenderType.Male);
+                            Panda panda = null;
+                            if (commands[3] == "Male" || commands[3] == "male")
+                            {
+                                panda = new Panda(commands[1], commands[2], GenderType.Male);
+                            }
+                            else if (commands[3] == "Female" || commands[3] == "female")
+                            {
+                                panda = new Panda(commands[1], commands[2], GenderType.Female);
+                            }
+                            else
+                            {
+                                throw new ArgumentException("gender must not be null");
+                            }
+
+                            pandaSocialNetwork.AddPanda(panda);
+                            break;
                         }
-                        else if (commands[3] == "Female" || commands[3] == "female")
+                    case "hasPanda":
                         {
-                            Panda panda = new Panda(commands[1], commands[2], GenderType.Female);
+                            Panda panda = null;
+
+                            if (commands[3] == "Male" || commands[3] == "male")
+                            {
+                                panda = new Panda(commands[1], commands[2], GenderType.Male);
+                            }
+                            else if (commands[3] == "Female" || commands[3] == "female")
+                            {
+                                panda = new Panda(commands[1], commands[2], GenderType.Female);
+                            }
+                            Console.WriteLine(pandaSocialNetwork.HasPanda(panda));
+                            break;
                         }
-                        else
-                        {
-                            throw new ArgumentException("gender must not be null");
-                        }
-                        break;
                     default:
                         Console.WriteLine("ERROR: Invalid command!");
                         break;
