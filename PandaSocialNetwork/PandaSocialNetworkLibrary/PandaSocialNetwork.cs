@@ -26,7 +26,7 @@ namespace PandaSocialNetworkLibrary
             if (pandas.ContainsKey(panda))
             {
                 return pandas[panda].Panda.Equals(panda);
-            }
+        }
             else return false;
         }
 
@@ -58,8 +58,8 @@ namespace PandaSocialNetworkLibrary
             else
             {
                 if (panda1Node.Friends.Contains(panda2Node)) throw new PandasAlreadyFriendsException();
-                else
-                {
+            else
+            {
                     panda1Node.Friends.Add(panda2Node);
                     panda2Node.Friends.Add(panda1Node);
                 }
