@@ -48,17 +48,17 @@ namespace PandaSocialNetworkApplication
                     case "addPanda":
                         {
                             Panda panda = null;
-                            if (commands[3] == "Male" || commands[3] == "male")
+                            if (commands[3].ToLower() == "male")
                             {
                                 panda = new Panda(commands[1], commands[2], GenderType.Male);
                             }
-                            else if (commands[3] == "Female" || commands[3] == "female")
+                            else if (commands[3].ToLower() == "female")
                             {
                                 panda = new Panda(commands[1], commands[2], GenderType.Female);
                             }
                             else
                             {
-                                throw new ArgumentException("gender must not be null");
+                                throw new ArgumentException("gender must be male or female");
                             }
 
                             pandaSocialNetwork.AddPanda(panda);
@@ -68,14 +68,19 @@ namespace PandaSocialNetworkApplication
                         {
                             Panda panda = null;
 
-                            if (commands[3] == "Male" || commands[3] == "male")
+                            if (commands[3].ToLower() == "male")
                             {
                                 panda = new Panda(commands[1], commands[2], GenderType.Male);
                             }
-                            else if (commands[3] == "Female" || commands[3] == "female")
+                            else if (commands[3].ToLower() == "female")
                             {
                                 panda = new Panda(commands[1], commands[2], GenderType.Female);
                             }
+                            else
+                            {
+                                throw new ArgumentException("gender must be male or female");
+                            }
+
                             Console.WriteLine(pandaSocialNetwork.HasPanda(panda));
                             break;
                         }
