@@ -131,7 +131,7 @@ namespace PandaSocialNetworkLibrary
             return ConnectionLevel(panda1, panda2) != -1;
         }
 
-        public int HowManyGenderInNetwork(int level, Panda panda, Gender gender)
+        public int HowManyGenderInNetwork(int level, Panda panda, GenderType gender)
         {
             Node pandaNode;
             if (HasPanda(panda))
@@ -157,10 +157,10 @@ namespace PandaSocialNetworkLibrary
                 {
                     switch (gender)
                     {
-                        case Gender.Male:
+                        case GenderType.Male:
                             if (curNode.Panda.IsMale) genderCount++;
                             break;
-                        case Gender.Female:
+                        case GenderType.Female:
                             if (curNode.Panda.IsFemale) genderCount++;
                             break;
                         default:
