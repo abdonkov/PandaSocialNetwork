@@ -23,37 +23,165 @@ namespace PandaSocialNetworkLibrary
 
         public bool HasPanda(Panda panda)
         {
-            return pandas.ContainsKey(panda);
+            if (pandas.ContainsKey(panda))
+            {
+                return pandas[panda].Panda.Equals(panda);
+            }
+            else return false;
         }
 
         public void MakeFriends(Panda panda1, Panda panda2)
         {
             Node panda1Node, panda2Node;
-            bool alredyFriends = true;
-            if (!pandas.ContainsKey(panda1))
+            bool notInNetwork = false;
+            if (!HasPanda(panda1))
             {
                 panda1Node = new Node(panda1);
                 pandas.Add(panda1, panda1Node);
-                alredyFriends = false;
+                notInNetwork = true;
             }
             else panda1Node = pandas[panda1];
 
-            if (!pandas.ContainsKey(panda2))
+            if (!HasPanda(panda2))
             {
                 panda2Node = new Node(panda2);
                 pandas.Add(panda2, panda2Node);
-                alredyFriends = false;
+                notInNetwork = true;
             }
             else panda2Node = pandas[panda2];
 
-            if (alredyFriends) throw new Exception();
-            else
+            if(notInNetwork)
             {
-
-
                 panda1Node.Friends.Add(panda2Node);
                 panda2Node.Friends.Add(panda1Node);
             }
+            else
+            {
+                if (panda1Node.Friends.Contains(panda2Node)) throw new PandasAlreadyFriendsException();
+                else
+                {
+                    panda1Node.Friends.Add(panda2Node);
+                    panda2Node.Friends.Add(panda1Node);
+                }
+            }
+        }
+
+        public bool AreFriends(Panda panda1, Panda panda2)
+        {
+            if (HasPanda(panda1) && HasPanda(panda2))
+            {
+                Node panda1Node = pandas[panda1];
+                Node panda2Node = pandas[panda2];
+
+                if (panda1Node.Friends.Contains(panda2Node)) return true;
+                else return false;
+            }
+            return false;
+        }
+
+        public List<Panda> FriendsOf(Panda panda)
+        {
+            if (HasPanda(panda))
+            {
+                return pandas[panda].Friends.Select(x => x.Panda).ToList();
+            }
+            else return new List<Panda>();
+        }
+
+        public int ConnectionLevel(Panda panda1, Panda panda2)
+        {
+            Node panda1Node, panda2Node;
+            if (HasPanda(panda1) && HasPanda(panda2))
+            {
+                panda1Node = pandas[panda1];
+                panda2Node = pandas[panda2];
+            }
+            else return -1;
+
+            HashSet<Node> visited = new HashSet<Node>();
+            Queue<Node> nodesQueue = new Queue<Node>();
+            Queue<int> levelQueue = new Queue<int>();
+
+            nodesQueue.Enqueue(panda1Node);
+            levelQueue.Enqueue(0);
+
+            while(nodesQueue.Count > 0)
+            {
+                Node curNode = nodesQueue.Dequeue();
+                int curLevel = levelQueue.Dequeue();
+
+                if (curNode.Equals(panda2Node)) return curLevel;
+
+                foreach (var friend in curNode.Friends)
+                {
+                    if (!visited.Contains(friend))
+                    {
+                        visited.Add(friend);
+                        nodesQueue.Enqueue(friend);
+                        levelQueue.Enqueue(curLevel + 1);
+                    }
+                }
+            }
+
+            return -1;
+        }
+
+        public bool AreConnected(Panda panda1, Panda panda2)
+        {
+            return ConnectionLevel(panda1, panda2) != -1;
+        }
+
+        public int HowManyGenderInNetwork(int level, Panda panda, Gender gender)
+        {
+            Node pandaNode;
+            if (HasPanda(panda))
+            {
+                pandaNode = pandas[panda];
+            }
+            else return -1;
+
+            HashSet<Node> visited = new HashSet<Node>();
+            Queue<Node> nodesQueue = new Queue<Node>();
+            Queue<int> levelQueue = new Queue<int>();
+            int genderCount = 0;
+
+            nodesQueue.Enqueue(pandaNode);
+            levelQueue.Enqueue(0);
+
+            while (nodesQueue.Count > 0)
+            {
+                Node curNode = nodesQueue.Dequeue();
+                int curLevel = levelQueue.Dequeue();
+
+                if (curLevel <= level)
+                {
+                    switch (gender)
+                    {
+                        case Gender.Male:
+                            if (curNode.Panda.IsMale) genderCount++;
+                            break;
+                        case Gender.Female:
+                            if (curNode.Panda.IsFemale) genderCount++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                if (level == 2) continue;
+
+                foreach (var friend in curNode.Friends)
+                {
+                    if (!visited.Contains(friend))
+                    {
+                        visited.Add(friend);
+                        nodesQueue.Enqueue(friend);
+                        levelQueue.Enqueue(curLevel + 1);
+                    }
+                }
+            }
+
+            return genderCount;
         }
 
         class Node
@@ -77,6 +205,19 @@ namespace PandaSocialNetworkLibrary
         public PandaAlreadyThereException(string message) : base(message) { }
         public PandaAlreadyThereException(string message, Exception inner) : base(message, inner) { }
         protected PandaAlreadyThereException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context) : base(info, context)
+        { }
+    }
+
+
+    [Serializable]
+    public class PandasAlreadyFriendsException : Exception
+    {
+        public PandasAlreadyFriendsException() : base("Pandas already friends!"){ }
+        public PandasAlreadyFriendsException(string message) : base(message) { }
+        public PandasAlreadyFriendsException(string message, Exception inner) : base(message, inner) { }
+        protected PandasAlreadyFriendsException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context) : base(info, context)
         { }
