@@ -21,7 +21,7 @@ namespace UnitTests
             Assert.AreEqual("Pesho", validName.PandaName);
         }
 
-        [TestMethod, ExpectedException(typeof(PandaSocialNetwork.PandaAlreadyThereException))]
+        [TestMethod, ExpectedException(typeof(PandaAlreadyThereException))]
         public void IfThereIsPanda()
         {
             var thereIsPanda = new PandaSocialNetwork();
@@ -30,7 +30,7 @@ namespace UnitTests
             thereIsPanda.AddPanda(panda);
         }
 
-        [TestMethod, ExpectedException(typeof(PandaSocialNetwork.PandasAlreadyFriendsException))]
+        [TestMethod, ExpectedException(typeof(PandasAlreadyFriendsException))]
         public void IfAlreadyFriends()
         {
             var alreadyFriends = new PandaSocialNetwork();
