@@ -13,6 +13,7 @@ namespace PandaSocialNetworkLibrary
         Female
     };
 
+    [Serializable]
     public class Panda
     {
         public string PandaName { get; private set; }

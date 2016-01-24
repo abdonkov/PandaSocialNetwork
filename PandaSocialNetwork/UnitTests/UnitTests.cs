@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PandaSocialNetworkLibrary;
+using System.Diagnostics;
 
 namespace UnitTests
 {
-    using PandaSocialNetworkLibrary;
     [TestClass]
     public class UnitTests
     {
@@ -55,6 +56,43 @@ namespace UnitTests
             }
 
             Assert.IsTrue(hasPanda);
+        }
+
+        [TestMethod]
+        public void NetworkSerializeAndDeserialize()
+        {
+            var savedNetwork = new PandaSocialNetwork();
+            var ivo = new Panda("Ivo", "ivo@pandamail.com", GenderType.Male);
+            var rado = new Panda("Rado", "rado@pandamail.com", GenderType.Male);
+            var tony = new Panda("Tony", "tony@pandamail.com", GenderType.Female);
+
+            savedNetwork.AddPanda(ivo);
+            savedNetwork.AddPanda(rado);
+            savedNetwork.AddPanda(tony);
+
+            savedNetwork.MakeFriends(ivo, rado);
+            savedNetwork.MakeFriends(rado, tony);
+
+            var pandaSerializer = new PandaSocialNetworkBinarySerializer("unitTest.dat");
+            pandaSerializer.Save(savedNetwork);
+            var loadedNetwork = pandaSerializer.Load();
+
+            Assert.IsTrue(
+                savedNetwork.HasPanda(ivo)
+                == loadedNetwork.HasPanda(ivo)
+                && savedNetwork.HasPanda(rado)
+                == loadedNetwork.HasPanda(rado)
+                && savedNetwork.HasPanda(tony)
+                == loadedNetwork.HasPanda(tony)
+                && savedNetwork.HasPanda(new Panda("a", "a@abv.bg", GenderType.Male))
+                == loadedNetwork.HasPanda(new Panda("a", "a@abv.bg", GenderType.Male))
+                && savedNetwork.ConnectionLevel(ivo, rado)
+                == loadedNetwork.ConnectionLevel(ivo, rado)
+                && savedNetwork.ConnectionLevel(ivo, tony)
+                == loadedNetwork.ConnectionLevel(ivo, tony)
+                && savedNetwork.HowManyGenderInNetwork(2, ivo, GenderType.Female)
+                == loadedNetwork.HowManyGenderInNetwork(2, ivo, GenderType.Female)
+                );
         }
     }
 }

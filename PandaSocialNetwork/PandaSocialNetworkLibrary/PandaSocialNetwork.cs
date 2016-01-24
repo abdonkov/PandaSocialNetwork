@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PandaSocialNetworkLibrary
 {
+    [Serializable]
     public class PandaSocialNetwork
     {
         Dictionary<Panda, Node> pandas;
@@ -191,17 +194,21 @@ namespace PandaSocialNetworkLibrary
                     switch (gender)
                     {
                         case GenderType.Male:
-                            if (curNode.Panda.IsMale) genderCount++;
-                            break;
+                            {
+                                if (curNode.Panda.IsMale) ++genderCount;
+                                break;
+                            }
                         case GenderType.Female:
-                            if (curNode.Panda.IsFemale) genderCount++;
-                            break;
+                            {
+                                if (curNode.Panda.IsFemale) ++genderCount;
+                                break;
+                            }
                         default:
                             break;
                     }
                 }
 
-                if (level == 2)
+                if (curLevel == 2)
                 {
                     continue;
                 }
@@ -220,6 +227,7 @@ namespace PandaSocialNetworkLibrary
             return genderCount;
         }
 
+        [Serializable]
         class Node
         {
             public Panda Panda { get; internal set; }

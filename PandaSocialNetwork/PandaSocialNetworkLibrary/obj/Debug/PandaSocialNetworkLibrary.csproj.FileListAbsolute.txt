@@ -3,3 +3,8 @@ C:\Users\Mitko\Desktop\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkL
 C:\Users\Mitko\Desktop\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\obj\Debug\PandaSocialNetworkLibrary.csprojResolveAssemblyReference.cache
 C:\Users\Mitko\Desktop\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\obj\Debug\PandaSocialNetworkLibrary.dll
 C:\Users\Mitko\Desktop\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\obj\Debug\PandaSocialNetworkLibrary.pdb
+D:\Alexander\C#\Projects\HB-PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\bin\Debug\PandaSocialNetworkLibrary.dll
+D:\Alexander\C#\Projects\HB-PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\bin\Debug\PandaSocialNetworkLibrary.pdb
+D:\Alexander\C#\Projects\HB-PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\obj\Debug\PandaSocialNetworkLibrary.csprojResolveAssemblyReference.cache
+D:\Alexander\C#\Projects\HB-PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\obj\Debug\PandaSocialNetworkLibrary.dll
+D:\Alexander\C#\Projects\HB-PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetwork\PandaSocialNetworkLibrary\obj\Debug\PandaSocialNetworkLibrary.pdb
